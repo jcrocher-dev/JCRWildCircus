@@ -1,0 +1,19 @@
+body{
+	background: black;
+}
+.image {
+	height: 300px
+}
+.card-body{
+	background:#131313;
+	font-size: 0.8rem;
+}
+
+.card-footer{
+	background: #a96a1a;
+	
+}
+
+.text-muted{
+	color: white !important;
+}

@@ -5,19 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class IndexController {
+public class CompanyController {
 
 	
-	@GetMapping ("/")
-	public String index(Model model) {
+	@GetMapping ("/compagnie")
+	public String company(Model model) {
 
-		return "index";
+		return "company";
 	} 
-	
-	
-	@GetMapping ("/index")
-	public String index1(Model model) {
-
-		return "index";
-	}
 }
