@@ -1,0 +1,19 @@
+.requiredField {
+	color: red;
+}
+
+.inputBars {
+	color:black;
+	font-size: 0.8rem;
+}
+
+.required{
+	font-size: 0.8rem;
+}
+
+legend, label{
+	font-size: 0.8rem;
+}
+.contact{
+	font-size: 1rem;
+}

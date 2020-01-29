@@ -1,0 +1,13 @@
+.navbar{
+	background: #131313!important;
+	border-bottom: 1px solid #555753;
+}
+
+.linknav{
+	color: white !important;
+}
+
+.linknav:hover{
+	color: #a96a1a !important;
+}
+
