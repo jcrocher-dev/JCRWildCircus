@@ -1,19 +1,14 @@
 body{
 	background: black;
 }
-.image {
-	height: 300px
-}
-.card-body{
-	background:#131313;
-	font-size: 0.8rem;
+
+
+.carousselHeigth{
+	height: 300px;
+	overflow: hidden;
 }
 
-.card-footer{
+.schedule {
 	background: #a96a1a;
-	
-}
-
-.text-muted{
-	color: white !important;
+	border-radius: 8px;
 }

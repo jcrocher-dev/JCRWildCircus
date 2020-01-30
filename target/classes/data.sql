@@ -1,0 +1,11 @@
+INSERT INTO `spectacle_entitie` (`auteur`, `categorie`, `date_creation`, `description`, `duree`, `img1`, `img2`, `img3`, `long_description`, `nom`) 
+VALUES ('Jean Pierre Cannet', 'Jeune public', 'mars 2019', 'description courte 1 bla bla bla', '1h', '/pictures/spectacle1.jpg', '/pictures/spectacle1-2.jpg', '/pictures/spectacle1-3.jpg', 'ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Spectacle1');
+INSERT INTO `spectacle_entitie` (`auteur`, `categorie`, `date_creation`, `description`, `duree`, `img1`, `img2`, `img3`, `long_description`, `nom`) 
+VALUES ('Jacques Michaud', 'Tout public', 'Janvier 2019', 'description courte 2 bla bla bla', '1h45', '/pictures/spectacle2.jpg', '/pictures/spectacle2-2.jpg', '/pictures/spectacle3-3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Spectacle2');
+
+INSERT INTO `schedule` (`adresse`, `cp`, `date`, `heure`, `lieu`, `ville`, `spectacle_entitie_id`) 
+VALUES ('255 rue de la chevre qui danse', '45000', '20 fevrier 2020', '18h', 'place de la mairie', 'Orleans', '1');
+INSERT INTO `schedule` (`adresse`, `cp`, `date`, `heure`, `lieu`, `ville`, `spectacle_entitie_id`) 
+VALUES ('255 rue de la chevre qui danse', '45000', '20 fevrier 2020', '20h30', 'place de la mairie', 'Orleans', '1');
+INSERT INTO `schedule` (`adresse`, `cp`, `date`, `heure`, `lieu`, `ville`, `spectacle_entitie_id`) 
+VALUES ('255 rue de la chevre qui danse', '45000', '21 fevrier 2020', '18h', 'place de la mairie', 'Orleans', '1');

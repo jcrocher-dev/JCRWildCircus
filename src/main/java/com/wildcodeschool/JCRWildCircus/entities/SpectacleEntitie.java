@@ -1,13 +1,14 @@
 package com.wildcodeschool.JCRWildCircus.entities;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -18,16 +19,19 @@ public class SpectacleEntitie {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nom;
-	private Date dateCreation;
+	private String auteur;
+	private String dateCreation;
 	private String description;
+	@Lob
+	@Column
+	private String longDescription;
 	private String categorie;
 	private String img1;
 	private String img2;
 	private String img3;
-	private int time;
-	@ManyToOne
-	@JoinColumn(name = "schedule_id")
-	private Schedule schedule;
+	private String duree;
+	@OneToMany(mappedBy = "spectacleEntitie")
+    private List<Schedule> schedules;
 	
 	
 	public SpectacleEntitie() {
@@ -55,12 +59,22 @@ public class SpectacleEntitie {
 	}
 
 
-	public Date getDateCreation() {
+	public String getAuteur() {
+		return auteur;
+	}
+
+
+	public void setAuteur(String auteur) {
+		this.auteur = auteur;
+	}
+
+
+	public String getDateCreation() {
 		return dateCreation;
 	}
 
 
-	public void setDateCreation(Date dateCreation) {
+	public void setDateCreation(String dateCreation) {
 		this.dateCreation = dateCreation;
 	}
 
@@ -72,6 +86,16 @@ public class SpectacleEntitie {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+
+	public String getLongDescription() {
+		return longDescription;
+	}
+
+
+	public void setLongDescription(String longDescription) {
+		this.longDescription = longDescription;
 	}
 
 
@@ -115,24 +139,26 @@ public class SpectacleEntitie {
 	}
 
 
-	public int getTime() {
-		return time;
+	public String getDuree() {
+		return duree;
 	}
 
 
-	public void setTime(int time) {
-		this.time = time;
+	public void setDuree(String duree) {
+		this.duree = duree;
 	}
 
 
-	public Schedule getSchedule() {
-		return schedule;
+	public List<Schedule> getSchedules() {
+		return schedules;
 	}
 
 
-	public void setSchedule(Schedule schedule) {
-		this.schedule = schedule;
+	public void setSchedules(List<Schedule> schedules) {
+		this.schedules = schedules;
 	}
+
+
 	
-	
+
 }
