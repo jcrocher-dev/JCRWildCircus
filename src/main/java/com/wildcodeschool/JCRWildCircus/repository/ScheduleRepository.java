@@ -10,4 +10,5 @@ import com.wildcodeschool.JCRWildCircus.entities.Schedule;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long>{
 
 	public List<Schedule> findScheduleBySpectacleEntitieId(Long spectacleId);
+
 }

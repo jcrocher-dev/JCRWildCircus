@@ -10,8 +10,7 @@
 .footer {
     background: #131313;
     color: white;
-
-    border-top: 1px solid #555753;
+    border-top: 0.5px solid #555753;
 }
 
 .footer .links ul {
@@ -54,4 +53,8 @@
 
 .about-company h4 {
 	font-size: 1.9rem;
+}
+
+.socialIcon img{
+	width: 30px;
 }
