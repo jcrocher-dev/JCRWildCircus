@@ -1,14 +1,13 @@
 package com.wildcodeschool.JCRWildCircus.entities;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 
@@ -18,14 +17,15 @@ public class Schedule {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date date;
-	private Date heure;
+	private String date;
+	private String heure;
 	private String lieu;
 	private String adresse;
 	private int cp;
 	private String ville;
-	@OneToMany(mappedBy = "schedule")
-	private List<SpectacleEntitie> spectacleEntities = new ArrayList<>();
+	@ManyToOne
+    @JoinColumn(name= "spectacleEntitie_id")
+    private SpectacleEntitie spectacleEntitie;
 	
 	
 	public Schedule() {
@@ -43,22 +43,22 @@ public class Schedule {
 	}
 
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
 
-	public Date getHeure() {
+	public String getHeure() {
 		return heure;
 	}
 
 
-	public void setHeure(Date heure) {
+	public void setHeure(String heure) {
 		this.heure = heure;
 	}
 
@@ -103,14 +103,16 @@ public class Schedule {
 	}
 
 
-	public List<SpectacleEntitie> getSpectacleEntities() {
-		return spectacleEntities;
+	public SpectacleEntitie getSpectacleEntitie() {
+		return spectacleEntitie;
 	}
 
 
-	public void setSpectacleEntities(List<SpectacleEntitie> spectacleEntities) {
-		this.spectacleEntities = spectacleEntities;
+	public void setSpectacleEntitie(SpectacleEntitie spectacleEntitie) {
+		this.spectacleEntitie = spectacleEntitie;
 	}
+
+
 
 	
 	
