@@ -1,0 +1,60 @@
+.footer * {
+	font-size: 0.8rem;
+	
+}
+
+.footer h4 {
+	font-size: 1.5rem;
+}
+
+.footer {
+    background: #131313;
+    color: white;
+    border-top: 0.5px solid #555753;
+}
+
+.footer .links ul {
+    list-style-type: none;
+}
+
+.footer .links li a {
+    color: white;
+    text-decoration: underline;
+}
+
+.mailto,
+.tel {
+    color: white;
+    text-decoration: underline;
+}
+
+.mailto:hover,
+.tel:hover {
+    color: white;
+}
+
+.footer .about-company a {
+    color: white;
+    transition: color .2s;
+}
+
+.footer .copyright p {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    margin-bottom: 0 !important;
+    text-align: center;
+}
+
+.footer h4{
+	font-family: var(--font-1);
+}
+
+.about-company h4 {
+	font-size: 1.9rem;
+}
+
+.socialIcon img{
+	width: 30px;
+}

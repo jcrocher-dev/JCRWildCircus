@@ -1,0 +1,14 @@
+body{
+	background: black;
+}
+
+
+.carousselHeigth{
+	height: 300px;
+	overflow: hidden;
+}
+
+.schedule {
+	background: #a96a1a;
+	border-radius: 8px;
+}

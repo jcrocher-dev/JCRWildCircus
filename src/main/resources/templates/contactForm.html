@@ -1,0 +1,30 @@
+<div th:fragment="contactForm">
+  <!-- Fixed contactForm -->
+	<form method="post" th:action="@{/contactForm}" enctype="multipart/form-data">
+		<div class="row p-0 m-0 justify-content-around">
+			<fieldset class="col-12 border fieldsetBack" >
+				<legend class="w-auto px-1 contact"> Contactez-nous </legend>
+				<div class="row justify-content-center mt-1">  
+					<label for="firstname" class="col-12 text-center">Votre nom <span class="requiredField">*</span></label>
+					<input class="col-11 inputBars" type="text" name="nom"  required>
+				</div>
+				<div class="row justify-content-center mt-1">  
+					<label for="lastname" class="col-12 text-center">Votre email <span class="requiredField">*</span></label>
+					<input class="col-11 inputBars" type="email" name="email" required>
+				</div>
+				<div class="row justify-content-center mt-1">  
+					<label for="lastname" class="col-12 text-center">Sujet <span class="requiredField">*</span></label>
+					<input class="col-11 inputBars" type="tel" name="sujet" required>
+				</div>
+				<div class="row justify-content-center mt-1">  
+					<label for="comments">Votre message <span class="requiredField">*</span></label>
+                   	<textarea id="comments" class="col-11 inputBars" name="message" rows="6" cols="30"></textarea>
+				</div>
+				<p class="col-12 mt-2 p-0 text-right required"><span class="requiredField">*</span> Champs obligatoires</p>
+				<div class="form-group mt-4 mb-2 d-flex justify-content-center">
+                    <button type="submit" id="submit-update" name="contact" class="btn btn-outline-light mb-3">Envoyer</button>
+                </div>
+			</fieldset>
+		</div>
+	</form>
+</div>

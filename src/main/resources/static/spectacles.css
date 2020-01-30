@@ -1,0 +1,31 @@
+body{
+	background: black;
+}
+.image {
+	height: 300px;
+	overflow: hidden;
+}
+.card-body{
+	background:#131313;
+	font-size: 0.8rem;
+}
+
+.card-footer{
+	background: #a96a1a;
+	
+}
+
+.text-muted{
+	color: #d3d7cf!important;
+	font-size: 1rem !important;
+}
+
+.submit{
+	background: none;
+	border: none;
+	
+}
+
+.text-muted:hover{
+	color: white !important;
+}
