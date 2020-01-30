@@ -15,13 +15,9 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 		auth.inMemoryAuthentication()
-			.withUser("Steve")
-				.password(encoder.encode("password"))
-				.roles("CHAMPION")
-				.and()
-			.withUser("Nick")
-				.password(encoder.encode("flerken"))
-				.roles("DIRECTOR");
+			.withUser("admin")
+				.password(encoder.encode("Admin"))
+				.roles("ADMIN");
 
 	}
 	
@@ -29,8 +25,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
 			.antMatchers("/").permitAll()
-	        .antMatchers("/avengers/assemble").hasAnyRole("CHAMPION","DIRECTOR")
-	        .antMatchers("/secret-bases").hasRole("DIRECTOR")
+	        .antMatchers("/gestionSpectacle", "/accueilAdmin", "/gestionAgenda", "/adminSidebar", "/CSS/**", "/JS/**", "/pictures/**").hasAnyRole("ADMIN")
 	        .anyRequest().authenticated()
 	        .and()
 	        .formLogin()
