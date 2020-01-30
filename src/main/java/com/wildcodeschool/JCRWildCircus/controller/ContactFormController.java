@@ -18,9 +18,8 @@ public class ContactFormController {
 	
 	@PostMapping ("/contactForm")
 	public String submitContactForm (@ModelAttribute ContactEntitie contactEntitie) {
+		
 		contactEntitieRepository.save(contactEntitie);
-		ModelMap model = new ModelMap();
-		model.addAttribute("toastMsg", "validated");
 		return "redirect:/compagnie";
 	}
 }

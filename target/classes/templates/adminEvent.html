@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Acme|Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/adminHome.css">
+  <title>Accueil Administrateur</title>
+</head>
+	<body>
+  <div id="wrapper">
+	  <aside th:replace="adminSidebar.html :: sidebar"></aside>
+	  <div th:replace="adminSidebar.html :: navbar"></div>
+	  <section class="fluid-container pt-3" id="content-wrapper"> 	
+	  	<h2 class="pl-0 pl-sm-5 mt-3 mb-4">Gestion des spectacles</h2>	
+	  	<hr class="col-11 col-sm-7 mt-4 mb-2 mb-sm-5"/>  	
+		<button type="button" class="btn creation m-5" data-toggle="modal" data-target="#creationModal">
+		  Creation d'un spectacle
+		</button>
+		<div class="modal fade" id="creationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Nouveau Spectacle</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form method="post" th:action="@{/createSpectacle}" enctype="multipart/form-data">
+			      <div class="modal-body ">
+			      	<fieldset>
+	               		<legend class="modalText">Nom du spectacle</legend>
+	                    <div class="form-group ">
+	                        <input type="text" name="nom" class="form-control" id="name" required>
+	                    </div>
+	               	</fieldset>
+	               	<fieldset>
+	                   	<legend class="modalText">Mise en scène</legend>
+	                    <div class="form-group">
+	                        <textarea name="auteur" class="form-control" id="auteur" required></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">Catégorie</legend>
+	                    <div class="form-group">
+	                        <textarea name="categorie" class="form-control" id="categorie" required></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">durée</legend>
+	                    <div class="form-group">
+	                        <textarea name="duree" class="form-control" id="duree" required></textarea>
+	                    </div>
+	                </fieldset>
+	               	<fieldset>
+	                   	<legend class="modalText">Description courte</legend>
+	                    <div class="form-group">
+	                        <textarea name="description" class="form-control" id="description" required></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">Description longue</legend>
+	                    <div class="form-group">
+	                        <textarea name="longDescription" class="form-control" id="longDescription" required></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">Lien photo 1</legend>
+	                    <div class="form-group">
+	                        <textarea name="img1" class="form-control" id="img1" required></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">Lien photo 2</legend>
+	                    <div class="form-group">
+	                        <textarea name="img2" class="form-control" id="img2"></textarea>
+	                    </div>
+	                </fieldset>
+	                <fieldset>
+	                   	<legend class="modalText">Lien photo 3</legend>
+	                    <div class="form-group">
+	                        <textarea name="img3" class="form-control" id="img3"></textarea>
+	                    </div>
+	                </fieldset>  
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn creation" data-dismiss="modal">Ferner</button>
+			        <button type="submit" class="btn creation">Sauvegarder</button>
+			      </div>
+			   </form>
+		    </div>
+		  </div>
+		</div>
+			<div class="accordion col-11 col-lg-11" id="accordion">
+				<div th:each="spectacle : ${spectacles}" class="card">
+			    	<div class="card-header bg-dark" th:id="|heading${spectacle.id}|">
+			        	<div class="pendingButton b-0 bg-dark" data-toggle="collapse" th:data-target="|#collapse${spectacle.id}|" aria-expanded="true" th:aria-controls="|collapse${spectacle.id}|">
+			        		<div class="d-flex flex-row justify-content-between align-items-center">
+				        		<div class="text-light d-flex align-items-center" >
+									<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="svg-inline--fa fa-chevron-down fa-w-14 my-auto btn-inline mr-2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="white" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg>                                                                				        						        	
+				        			<p class="m-0" th:text="${spectacle.nom}"></p>
+				        		</div>
+			        		</div>
+			        	</div>			        
+			    	</div>
+			    	<div th:id="|collapse${spectacle.id}|" th:class="|collapse ${toggleCard == spectacle.id.toString()? 'show' : ''}|" th:aria-labelledby="|heading${spectacle.id}|" data-parent="#accordion">
+	            		<div class="card">
+	                    	<div class="card-body row justify-content-around">
+	                    		<div class="col-11 col-lg-11 mx-auto p-2 my-2 my-lg-0">
+		                    		<h3 class="mb-4"> Informations générales</h3>
+		                    		<div class="row">
+		                    			<div class="col-6 col-lg-4">
+		                    				<p th:text="|Mise en scène : ${spectacle.auteur}|"></p>
+		                    			</div>
+		                    			<div class="col-6 col-lg-4">
+		                    				<p th:text="|Date de création : ${spectacle.dateCreation}|"></p>
+		                    			</div>
+		                    			<div class="col-6 col-lg-4">
+		                    				<p th:text="|Durée : ${spectacle.duree}|"></p>
+		                    			</div>
+		                    		</div>
+		                    		<div class="row">
+		                    			<div class="col-12 col-lg-12">
+		                    				<p th:text="|Description courte : ${spectacle.description}|"></p>
+		                    			</div>
+		                    			<div class="col-12 col-lg-12">
+		                    				<p th:text="|Description longue : ${spectacle.longDescription}|"></p>
+		                    			</div>
+		                    		</div>
+		                    		<div class="row justify-content-around mt-4">
+		                    			<div class="col-12 col-lg-3 text-center photo">
+		                    				<img class="photo" alt="photo 1" th:src="${spectacle.img1}">
+		                    			</div>
+		                    			<div class="col-12 col-lg-3 text-center photo">
+		                    				<img class="photo" alt="photo 2" th:src="${spectacle.img2}">
+		                    			</div>
+		                    			<div class="col-12 col-lg-3 text-center photo">
+		                    				<img class="photo" alt="photo 3" th:src="${spectacle.img3}">
+		                    			</div>
+		                    		</div>			                    		
+								</div>
+								<div class="col-12 col-lg-12 mx-auto p-2 mt-3 d-flex justify-content-center flex-wrap">
+								 <button type="button" class="btn creation mx-1 my-1" data-toggle="modal" th:data-target="${'#customerModel'+spectacle.id}">
+								  Modifier
+								 </button>
+				                     <div class="modal fade" th:id="${'customerModel'+spectacle.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										  <div class="modal-dialog" role="document">
+										    <div class="modal-content">
+										      <div class="modal-header">
+										        <h5 class="modal-title" id="exampleModalLabel">Modifier le Spectacle</h5>
+										        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										          <span aria-hidden="true">&times;</span>
+										        </button>
+										      </div>
+										      <form method="post" th:action="@{/updateSpectacle}" enctype="multipart/form-data">
+											      <div class="modal-body ">
+											      	<input type="hidden" name="id" th:value="${spectacle.id}">
+	                                                <div class="form-group">
+	                                                    <label for="name">Nom</label>
+	                                                    <input type="text" name="nom" class="form-control" id="nom" th:value="${spectacle.nom}" required>
+	                                                </div>
+											      	<div class="form-group">
+	                                                    <label for="name">Mise en scène</label>
+	                                                    <input type="text" name="auteur" class="form-control" id="auteur" th:value="${spectacle.auteur}" required>
+	                                                </div>
+	                                                <div class="form-group">
+	                                                    <label for="name">Date de création</label>
+	                                                    <input type="text" name="dateCreation" class="form-control" id="dateCreation" th:value="${spectacle.dateCreation}" required>
+	                                                </div>
+											      	<div class="form-group">
+	                                                    <label for="name">Catégorie</label>
+	                                                    <input type="text" name="categorie" class="form-control" id="categorie" th:value="${spectacle.categorie}" required>
+	                                                </div>
+									               	<div class="form-group">
+	                                                    <label for="name">durée</label>
+	                                                    <input type="text" name="duree" class="form-control" id="duree" th:value="${spectacle.duree}" required>
+	                                                </div>
+									                <div class="form-group">
+	                                                    <label for="name">Description courte</label>
+	                                                    <input type="text" name="description" class="form-control" id="description" th:value="${spectacle.description}" required>
+	                                                </div>
+									                <div class="form-group">
+	                                                    <label for="name">Description longue</label>
+	                                                    <input type="text" name="longDescription" class="form-control" id="longDescription" th:value="${spectacle.longDescription}" required>
+	                                                </div>
+									               	<div class="form-group">
+	                                                    <label for="name">Lien photo 1</label>
+	                                                    <input type="text" name="img1" class="form-control" id="img1" th:value="${spectacle.img1}" required>
+	                                                </div>
+									                <div class="form-group">
+	                                                    <label for="name">Lien photo 2</label>
+	                                                    <input type="text" name="img2" class="form-control" id="img2" th:value="${spectacle.img2}">
+	                                                </div>
+	                                                <div class="form-group">
+	                                                    <label for="name">Lien photo 3</label>
+	                                                    <input type="text" name="img3" class="form-control" id="img3" th:value="${spectacle.img3}">
+	                                                </div>
+											      </div>
+											      <div class="modal-footer">
+											      	<button type="submit" class="btn creation">Sauvegarder</button>
+											        <button type="button" class="btn creation" data-dismiss="modal">Fermer</button>
+											      </div>
+											   </form>
+										    </div>
+										  </div>
+										</div>
+					                 <form method="POST" th:action="@{/deleteSpectacle}" class="mx-1 my-1">
+										<input type="hidden" name="spectacleId" th:value="${spectacle.id}">
+				                    	<button class="btn creation" type="submit" onclick="return confirm('Etes-vous sûrs de vouloir supprimer ce spectacle ? Il sera définitivement effacé de la base de donnée !');">
+				                          Supprimer
+				                    	</button>
+				                    </form>
+					       		</div>									
+							</div>
+			    		</div>
+			    	</div>
+				</div>
+			</div>
+	  	</section>
+	</div>	  
+</body>
+	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../JS/adminHome.js"></script>
+</html>
+
