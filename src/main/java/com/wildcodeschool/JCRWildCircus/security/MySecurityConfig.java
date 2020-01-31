@@ -24,9 +24,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-			.antMatchers("/").permitAll()
-	        .antMatchers("/gestionSpectacle", "/accueilAdmin", "/gestionAgenda", "/adminSidebar", "/CSS/**", "/JS/**", "/pictures/**").hasAnyRole("ADMIN")
-	        .anyRequest().authenticated()
+			.antMatchers("/**", "/CSS/**", "/JS/**", "/pictures/**").permitAll()
+	        .antMatchers("/gestionSpectacle/**", "**/accueilAdmin/**", "/gestionAgenda/**", "/adminSidebar/**", "/CSS/**", "/JS/**", "/pictures/**").hasAnyRole("ADMIN")
 	        .and()
 	        .formLogin()
 	        .and()
